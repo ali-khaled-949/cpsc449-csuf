@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes</title>
+</head>
+<body>
+    <h1>Notes</h1>
+    <ul>
+        {% for note in notes %}
+            <li>{{ note.cwid }}: {{ note.full_name }} <a href="{{ url_for('delete_note', note_id=note._id) }}">Delete</a></li>
+        {% endfor %}
+    </ul>
+
+    <h2>Add a New Note</h2>
+    <form action="{{ url_for('add_note') }}" method="post">
+        <label for="cwid">CWID</label>
+        <input type="text" id="cwid" name="cwid" required>
+        <label for="full_name">Full Name</label>
+        <input type="text" id="full_name" name="full_name" required>
+        <button type="submit">Add Note</button>
+    </form>
+</body>
+</html>
